@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace guest_book\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        // 'guest_book\Model' => 'guest_book\Policies\ModelPolicy',
     ];
 
     /**
