@@ -15,10 +15,10 @@ class CreateGuestMessagesTable extends Migration
     {
         Schema::create('guest_messages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Username');
-            $table->string('Email');
-            $table->string('Homepage')->nullable();
-            $table->text('Text');
+            $table->string('username');
+            $table->string('email');
+            $table->string('homepage')->nullable();
+            $table->text('text');
             $table->timestamps();
         });
     }
