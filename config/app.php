@@ -175,6 +175,9 @@ return [
         guest_book\Providers\EventServiceProvider::class,
         guest_book\Providers\RouteServiceProvider::class,
 
+        // Added
+        Mews\Captcha\CaptchaServiceProvider::class,
+
     ],
 
     /*
@@ -226,6 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Added
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];
