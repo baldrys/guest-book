@@ -16,13 +16,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(GuestMessage::class, function (Faker $faker) {
+$guestMsg = $factory->define(GuestMessage::class, function (Faker $faker) {
     return [
         'username' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'text' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'homepage' => $faker->url,
         'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-        // 'tags' => $faker->words($nb = 3, $asText = true) 
+        'tags' => $faker->words($nb = 3, $asText = false),
     ];
 });
