@@ -1,5 +1,5 @@
 <tr>
-    <td>{{ $guest_messages->username }}</td>
-    <td>{{ $guest_messages->text }}</td>
-    <td>{{ $guest_messages->created_at }}</td>
+    <td>{{ $message->username }}</td>
+    <td>{{ $message->text }}</td>
+    <td>{{ $message->created_at }}</td>
   </tr>

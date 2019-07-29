@@ -14,22 +14,11 @@
                 <th scope="col">Дата</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              @foreach ($messages as $message)
+                @include('layouts.message')
+              @endforeach
             </tbody>
           </table>
         </div>

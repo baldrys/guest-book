@@ -1,8 +1,8 @@
 <?php
 
-namespace guest_book\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use guest_book\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

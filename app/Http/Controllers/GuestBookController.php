@@ -1,12 +1,14 @@
 <?php
 
-namespace guest_book\Http\Controllers;
+namespace App\Http\Controllers;
 
+use App\GuestMessage;
 use Illuminate\Http\Request;
 
 class GuestBookController extends Controller
 {
     public function index(Request $request) {
-        return view('index');
+        $messages = GuestMessage::all();
+        return view('index', ['messages' => $messages]);
     }
 }

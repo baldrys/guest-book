@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        guest_book\Providers\AppServiceProvider::class,
-        guest_book\Providers\AuthServiceProvider::class,
-        // guest_book\Providers\BroadcastServiceProvider::class,
-        guest_book\Providers\EventServiceProvider::class,
-        guest_book\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
         // Added
         Mews\Captcha\CaptchaServiceProvider::class,

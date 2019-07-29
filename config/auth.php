@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => guest_book\User::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [
