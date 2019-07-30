@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'GuestBookController@index');
+
+Route::post('/post-message', 'AjaxGuestBookController@postMessage')->name('postajax');

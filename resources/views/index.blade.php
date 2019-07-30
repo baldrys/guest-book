@@ -3,6 +3,7 @@
 @section('content')
     <h1 class="text-center">Оставьте сообщение</h1>
     <hr/>
+    @include('includes.alerts-block')
     @include('includes.form-message')
     <h1 class="text-center">Сообщения гостевой книги</h1>
         <div class="messages">
