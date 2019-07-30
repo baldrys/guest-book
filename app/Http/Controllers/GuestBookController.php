@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class GuestBookController extends Controller
 {
     public function index(Request $request) {
-        $messages = GuestMessage::orderBy('created_at', 'desc')->get();
+        $messages = GuestMessage::orderBy('created_at', 'desc')->paginate(5);
         return view('index', ['messages' => $messages]);
     }
 }

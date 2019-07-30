@@ -10,6 +10,7 @@
             <thead>
               <tr>
                 <th scope="col">Имя</th>
+                <th scope="col">E-mail</th>
                 <th scope="col">Сообщение</th>
                 <th scope="col">Тэги</th>
                 <th scope="col">Дата</th>
@@ -17,11 +18,10 @@
             </thead>
 
             <tbody>
-              @foreach ($messages as $message)
-                @include('layouts.message')
-              @endforeach
+              @include('layouts.messages')
             </tbody>
           </table>
         </div>
-
+        @include('layouts.pagination')
 @endsection
+
