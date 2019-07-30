@@ -1,4 +1,4 @@
-<form action="{{ route('postajax') }}" method="POST" id="id-form_messages">
+<form id="form_messages" data-url="{{ route('postajax')}}">
     @csrf
 
     <div class="form-group">
