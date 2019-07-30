@@ -4,9 +4,15 @@ $.ajaxSetup({
     }
 });
 
+$('.messages tbody').children(":first").click(function(e){
+    // e.preventDefault();
+    console.log('HELLO');
+});
+
 $('#form_messages').submit(function (e) {
     e.preventDefault();
     $('.alert-danger').remove();
+    $('.alert-success').remove();
     $.ajax({
         type: 'POST',
         url: $(this).data("url"),
@@ -28,7 +34,10 @@ $('#form_messages').submit(function (e) {
 
     })
     .done(function (data) {
-        // $('#comments-column').find("header").after(data.html);
+        $('.messages tbody').children(":first").before(data.new_message);
+        $("#form_messages")[0].reset();
+        var sucessString = "<div class='alert alert-success'><p>Message added</p></div>";
+        $( "#form_messages" ).before(sucessString);
         console.log(data);
     });
 });
