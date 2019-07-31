@@ -1,3 +1,7 @@
 .pagination {
     justify-content: center;
 }
+
+#search-form {
+    padding-bottom: 10px;
+}

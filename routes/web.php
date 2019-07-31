@@ -15,3 +15,4 @@ Route::get('/', 'GuestBookController@index');
 
 Route::post('/', 'AjaxGuestBookController@postMessage')->name('postajax');
 Route::get('/paginate-messages', 'AjaxGuestBookController@ajaxGetPaginateMessages')->name('getajax');
+Route::post('/ajaxsearch', 'AjaxGuestBookController@ajaxSearch')->name('ajaxsearch');

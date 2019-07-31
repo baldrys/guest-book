@@ -50,13 +50,29 @@ $(document).on('click', '.pagination a', function(event){
         url:"/paginate-messages?page=" + page,
         success:function(data)
         {
-            console.log(data.paginationMessages);
             $('#pagination-messages').html(data.paginationMessages);
         }
        });
    });
 
-   function removeAlerts() {
-        $('.alert-danger').remove();
-        $('.alert-success').remove();
-   }
+function removeAlerts() {
+    $('.alert-danger').remove();
+    $('.alert-success').remove();
+}
+
+$("#search-form").submit(function(event){
+    event.preventDefault();
+    removeAlerts();
+    var url = $(this).attr('action');
+    $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: { 
+                search: $('#search-input').val(), 
+            },
+
+        })
+        .done(function (data) {
+            $('#pagination-messages').html(data.paginationMessages);
+        });
+});
