@@ -11,6 +11,7 @@ class GuestBookTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\GuestMessage::class, 5)->create();
+        $numberOfData = (int)config('constants.fakerData');
+        factory(App\GuestMessage::class, $numberOfData)->create();
     }
 }

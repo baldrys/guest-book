@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 
 class GuestBookController extends Controller
 {
-    const PER_PAGE = 5;
+    
+    /**
+     * Вовзращаент число сообщений на страницу из файла конфигурации
+     *
+     * @return int
+     */
+    private function getPerPage() {
+        return (int)config('constants.pagination');
+    }
 
     /**
      * Отображение главной страницы
@@ -20,7 +28,7 @@ class GuestBookController extends Controller
      */
     public function index(Request $request)
     {
-        $messages = GuestMessage::orderBy('created_at', 'desc')->paginate(self::PER_PAGE);
+        $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($this->getPerPage());
         return view('index', ['messages' => $messages]);
     }
 
@@ -62,7 +70,7 @@ class GuestBookController extends Controller
             if ($request['tags']) {
                 $guestMessage->attachTags(preg_split('/\s+/', $request['tags']));
             }
-            $messages = GuestMessage::orderBy('created_at', 'desc')->paginate(self::PER_PAGE, ['*'], 'page', $request['page']);
+            $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($this->getPerPage(), ['*'], 'page', $request['page']);
             $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
             return response()->json([
                 'paginationMessages' => $paginationMessages,
@@ -82,7 +90,7 @@ class GuestBookController extends Controller
         if (!$request->ajax()) {
             return abort(404);
         } else {
-            $messages = GuestMessage::orderBy('created_at', 'desc')->paginate(self::PER_PAGE);
+            $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($this->getPerPage());
             $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
             return response()->json([
                 'paginationMessages' => $paginationMessages,
@@ -111,10 +119,10 @@ class GuestBookController extends Controller
                 if ((bool) strtotime($q)) {
                     $query = $query->orWhere('created_at', Carbon::parse($q));
                 }
-                $messages = $query->orderBy('created_at', 'desc')->paginate(self::PER_PAGE);
+                $messages = $query->orderBy('created_at', 'desc')->paginate($this->getPerPage());
 
             } else {
-                $messages = GuestMessage::orderBy('created_at', 'desc')->paginate(self::PER_PAGE);
+                $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($this->getPerPage());
             }
             $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
             return response()->json([
