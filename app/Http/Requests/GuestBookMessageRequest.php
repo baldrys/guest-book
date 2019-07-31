@@ -29,6 +29,7 @@ class GuestBookMessageRequest extends FormRequest
             'homepage' => 'nullable|url',
             'message' => 'required',
             'tags' => 'nullable|regex:/^[a-zA-Z0-9_ ]*$/',
+            'captcha' => 'required|captcha'
         ];
     }
 }

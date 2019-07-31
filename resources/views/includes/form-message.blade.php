@@ -28,6 +28,23 @@
     </div>
 
     <div class="form-group">
+        <label for="captcha">Капча: *</label>
+        
+        <div class="row">
+            <div class="col-md-6 captcha">
+                <span>{{ captcha_img() }}</span>     
+            <button class="btn btn-primary btn-refresh" type="button" formaction="{{ route('refresh') }}">Обновить</button>
+            </div>
+
+        </div>
+
+
+  
+        <input class="form-control" placeholder="Введите капчу" name="captcha" type="text" id="captcha" value = "{{ Request::old('tags') }}">
+    </div>
+    
+
+    <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Добавить">
     </div>
 

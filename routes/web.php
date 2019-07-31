@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'GuestBookController@index');
-
+Route::get('/refresh-captcha', 'GuestBookController@refreshCaptcha')->name('refresh');
 Route::post('/', 'AjaxGuestBookController@postMessage')->name('postajax');
 Route::get('/paginate-messages', 'AjaxGuestBookController@ajaxGetPaginateMessages')->name('getajax');
 Route::post('/ajaxsearch', 'AjaxGuestBookController@ajaxSearch')->name('ajaxsearch');

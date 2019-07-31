@@ -4,6 +4,20 @@ $.ajaxSetup({
     }
 });
 
+function refreshCaptcha() {
+    $.ajax({
+        type: 'GET',
+        url: $('.btn-refresh').attr('formaction'),
+        success: function (data) {
+            $('.captcha span').html(data);
+        }
+    }) 
+};
+
+$('.btn-refresh').click(function(e){
+     refreshCaptcha();
+});
+
 $('#form_messages').submit(function (e) {
     e.preventDefault();
     removeAlerts();
@@ -18,6 +32,7 @@ $('#form_messages').submit(function (e) {
             homepage: $('#homepage').val(),
             message: $('#message').val(),
             tags: $('#tags').val(),
+            captcha: $('#captcha').val(),
             page: pageNum
         },
         error: function (jqXHR, exception) {
@@ -36,6 +51,7 @@ $('#form_messages').submit(function (e) {
         var sucessString = "<div class='alert alert-success'><p>Message added</p></div>";
         
         $( "#form_messages" ).before(sucessString);
+        refreshCaptcha();
         $(".alert.alert-success")[0].scrollIntoView();
         $('#pagination-messages').html(data.paginationMessages);
     });
