@@ -14,3 +14,4 @@
 Route::get('/', 'GuestBookController@index');
 
 Route::post('/', 'AjaxGuestBookController@postMessage')->name('postajax');
+Route::get('/paginate-messages', 'AjaxGuestBookController@ajaxGetPaginateMessages')->name('getajax');

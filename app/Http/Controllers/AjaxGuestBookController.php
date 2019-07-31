@@ -21,14 +21,24 @@ class AjaxGuestBookController extends Controller
             $guestMessage->attachTags(preg_split('/\s+/', $request['tags']));
         }
         $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($perPage, ['*'], 'page', $request['page']);
-        // $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($perPage);
-        // $view = view("layouts/message", ['message' => $guestMessage])->render();
-        // return response()->json(['new_message'=>$view]);
-        $newMessagesView = view("layouts/messages", ['messages' => $messages])->render();
-        $newPagination = view("layouts/pagination", ['messages' => $messages])->render();
+        $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
         return response()->json([
-            'newMessages'=> $newMessagesView,
-            'newPagination' => $newPagination,
+            'paginationMessages'=> $paginationMessages,
             ]);
     }
+
+    public function ajaxGetPaginateMessages(Request $request) {
+        if($request->ajax())
+        {
+            $perPage = 5;
+            $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($perPage);
+            $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
+            return response()->json([
+                'paginationMessages'=> $paginationMessages,
+                ]);
+        }
+
+    }
+
+
 }

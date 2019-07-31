@@ -6,12 +6,9 @@ $.ajaxSetup({
 
 $('#form_messages').submit(function (e) {
     e.preventDefault();
-    $('.alert-danger').remove();
-    $('.alert-success').remove();
+    removeAlerts();
     var url = $(this).data("url");
     var pageNum = $('li.page-item.active span').text();
-    // var page_no = getURLParameter(url, 'page');
-    // console.log(page_no);
     $.ajax({
         type: 'POST',
         url: url,
@@ -30,33 +27,36 @@ $('#form_messages').submit(function (e) {
             });
             errorString += "</ul></div>";
             $( "#form_messages" ).before( errorString);
+            $(".alert.alert-danger")[0].scrollIntoView()
         }
 
     })
     .done(function (data) {
-        console.log(data);
-        console.log(data.page);
-        // $('.messages tbody').children(":first").before(data.new_message);
         $("#form_messages")[0].reset();
-        // var sucessString = "<div class='alert alert-success'><p>Message added</p></div>";
-        // $( "#form_messages" ).before(sucessString);
-
-
-        $(".messages tbody").empty();
-
-        $(".messages tbody").append(data.newMessages);
-
-        // here you will replace links
-        // $('.pagination').empty();
-        // $('.pagination').replaceWith(data.newPagination);
-        // var $pagination = $('.pagination');
+        var sucessString = "<div class='alert alert-success'><p>Message added</p></div>";
         
-        console.log(pageNum);
-        if(!$('.pagination').length)
-            $('.messages').after(data.newPagination)
-        else
-            $('.pagination').replaceWith(data.newPagination);
-        
-
+        $( "#form_messages" ).before(sucessString);
+        $(".alert.alert-success")[0].scrollIntoView();
+        $('#pagination-messages').html(data.paginationMessages);
     });
 });
+
+
+$(document).on('click', '.pagination a', function(event){
+    event.preventDefault();
+    removeAlerts();
+    var page = $(this).attr('href').split('page=')[1];
+    $.ajax({
+        url:"/paginate-messages?page=" + page,
+        success:function(data)
+        {
+            console.log(data.paginationMessages);
+            $('#pagination-messages').html(data.paginationMessages);
+        }
+       });
+   });
+
+   function removeAlerts() {
+        $('.alert-danger').remove();
+        $('.alert-success').remove();
+   }
