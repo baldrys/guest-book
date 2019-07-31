@@ -1,4 +1,4 @@
-<form id="form_messages" data-url="{{ route('postajax')}}">
+<form id="form_messages" data-url="{{ route('ajaxAdd')}}">
     @csrf
 
     <div class="form-group">
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-6 captcha">
                 <span>{{ captcha_img() }}</span>     
-            <button class="btn btn-primary btn-refresh" type="button" formaction="{{ route('refresh') }}">Обновить</button>
+            <button class="btn btn-primary btn-refresh" type="button" formaction="{{ route('ajaxRefresh') }}">Обновить</button>
             </div>
 
         </div>

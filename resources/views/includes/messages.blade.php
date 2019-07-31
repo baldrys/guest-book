@@ -1,3 +1,3 @@
 @foreach ($messages as $message)
-    @include('layouts.message')
+    @include('includes.message')
 @endforeach

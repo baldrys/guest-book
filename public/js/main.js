@@ -63,7 +63,7 @@ $(document).on('click', '.pagination a', function(event){
     removeAlerts();
     var page = $(this).attr('href').split('page=')[1];
     $.ajax({
-        url:"/paginate-messages?page=" + page,
+        url:"/ajax-paginate-messages?page=" + page,
         success:function(data)
         {
             $('#pagination-messages').html(data.paginationMessages);
@@ -76,25 +76,7 @@ function removeAlerts() {
     $('.alert-success').remove();
 }
 
-$("#search-form").submit(function(event){
-    event.preventDefault();
-    removeAlerts();
-    var url = $(this).attr('action');
-    $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: { 
-                search: $('#search-input').val(), 
-            },
-
-        })
-        .done(function (data) {
-            $('#pagination-messages').html(data.paginationMessages);
-        });
-});
-
 function fetchData() {
-    console.log($('#search-input').val());
     $.ajax({
         type: 'POST',
         url: $("#search-form").attr('action'),

@@ -12,10 +12,10 @@
     </thead>
 
     <tbody>
-      @include('layouts.messages')
+      @include('includes.messages')
     </tbody>
 
   </table>
-  @include('layouts.pagination')
+  @include('includes.pagination')
 </div>
 
