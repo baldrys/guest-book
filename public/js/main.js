@@ -76,3 +76,22 @@ $("#search-form").submit(function(event){
             $('#pagination-messages').html(data.paginationMessages);
         });
 });
+
+function fetchData() {
+    console.log($('#search-input').val());
+    $.ajax({
+        type: 'POST',
+        url: $("#search-form").attr('action'),
+        data: { 
+            search: $('#search-input').val(), 
+        },
+
+    })
+    .done(function (data) {
+        $('#pagination-messages').html(data.paginationMessages);
+    });
+}
+
+$(document).on('keyup', '#search-input', function(){
+    fetchData();
+})

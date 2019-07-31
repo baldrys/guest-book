@@ -54,11 +54,16 @@ class AjaxGuestBookController extends Controller
                     $query = $query->orWhere('created_at', Carbon::parse($q));
                 } 
                 $messages = $query->orderBy('created_at', 'desc')->paginate($perPage);
-                $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
-                return response()->json([
-                    'paginationMessages'=> $paginationMessages,
-                    ]);
+                
+
             }
+            else {
+                $messages = GuestMessage::orderBy('created_at', 'desc')->paginate($perPage);
+            }
+            $paginationMessages = view("includes/pagination-messages", ['messages' => $messages])->render();
+            return response()->json([
+                'paginationMessages'=> $paginationMessages,
+                ]);
 
         }
 
