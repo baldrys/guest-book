@@ -65,6 +65,7 @@ class GuestBookController extends Controller
                 'email' => $request['email'],
                 'homeapge' => $request['homeapge'],
                 'text' => $request['message'],
+                'created_at' => Carbon::parse($request['createdAt']),
             ]);
 
             if ($request['tags']) {

@@ -32,6 +32,7 @@ $('#form_messages').submit(function (e) {
             homepage: $('#homepage').val(),
             message: $('#message').val(),
             tags: $('#tags').val(),
+            createdAt: $('#createdAt').val(),
             captcha: $('#captcha').val(),
             page: pageNum
         },

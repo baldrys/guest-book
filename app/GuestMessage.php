@@ -15,7 +15,7 @@ class GuestMessage extends Model
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'homepage', 'text'
+        'username', 'email', 'homepage', 'text', 'created_at'
     ];
 
     public function tagsToString() {

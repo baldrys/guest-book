@@ -28,6 +28,11 @@
     </div>
 
     <div class="form-group">
+        <label for="email">Дата:</label>
+        <input class="form-control" type="datetime-local" name="createdAt"  id="createdAt">
+    </div>
+
+    <div class="form-group">
         <label for="captcha">Капча: *</label>
         
         <div class="row">
@@ -38,11 +43,8 @@
 
         </div>
 
-
-  
         <input class="form-control" placeholder="Введите капчу" name="captcha" type="text" id="captcha" value = "{{ Request::old('tags') }}">
     </div>
-    
 
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Добавить">
